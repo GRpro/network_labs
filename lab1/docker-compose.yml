@@ -22,7 +22,7 @@ services:
       - 54:54/udp
     networks:
       lab1:
-        ipv4_address: 10.18.51.6
+        ipv4_address: 10.18.51.9
     restart: always
 
 networks:

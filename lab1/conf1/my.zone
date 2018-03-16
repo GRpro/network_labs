@@ -1,9 +1,9 @@
 $TTL 1h
 ; -----------------------------------------------------------------------------
-; SOA for zone05.net
+; SOA for zone08.net
 ; -----------------------------------------------------------------------------
 
-@ IN SOA ns1.zone05.net contact.zone05.net. (
+@ IN SOA ns1.zone08.net contact.zone08.net. (
             2016021501      ; Serial
             1h              ; Refresh
             15m             ; Retry
@@ -13,12 +13,12 @@ $TTL 1h
 ; -----------------------------------------------------------------------------
 ; zone records
 ; -----------------------------------------------------------------------------
-zone05.net.         1800    IN    NS        ns1.zone05.net.
+zone08.net.         1800    IN    NS        ns1.zone08.net.
 
 ; -----------------------------------------------------------------------------
 ; MX records
 ; -----------------------------------------------------------------------------
-mail                3600    IN   MX    1    alpha
+smtp                3600    IN   MX    1    rose
 
 ; -----------------------------------------------------------------------------
 ; pointer records
@@ -26,18 +26,18 @@ mail                3600    IN   MX    1    alpha
 ns1                 1800    IN    A         10.18.51.5
 ns2                 1800    IN    A         10.18.51.6
 
-alpha               1800    IN    A         172.25.11.10
-beta                1800    IN    A         172.25.11.20
-gamma               1800    IN    A         172.25.11.30
-delta               1800    IN    A         172.25.11.40
-omega               1800    IN    A         172.25.11.50
+rose                1800    IN    A         192.168.33.1
+tulip               1800    IN    A         192.168.33.2
+narcissus           1800    IN    A         192.168.33.3
+aster               1800    IN    A         192.168.33.4
+peony               1800    IN    A         192.168.33.5
 
 ; -----------------------------------------------------------------------------
 ; cname records
 ; -----------------------------------------------------------------------------
-srv-01              3600    IN    CNAME      alpha.zone05.net.
-srv-02              3600    IN    CNAME      beta.zone05.net.
-srv-03              3600    IN    CNAME      gamma.zone05.net.
-srv-04              3600    IN    CNAME      delta.zone05.net.
-srv-05              3600    IN    CNAME      omega.zone05.net.
+ws1              3600    IN    CNAME      rose
+ws2              3600    IN    CNAME      tulip
+ws3              3600    IN    CNAME      narcissus
+ws4              3600    IN    CNAME      aster
+ws5              3600    IN    CNAME      peony
 
