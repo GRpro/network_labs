@@ -1,0 +1,32 @@
+version: "2"
+
+services:
+  dns1:
+    build: .
+    volumes:
+      - ./conf1:/etc/bind
+      - ./logs1/:/var/log/named
+    ports:
+      - 53:53/udp
+    networks:
+      lab1:
+        ipv4_address: 10.18.51.5
+    restart: always
+
+#  dns2:
+#    build: .
+#    volumes:
+#      - ./conf2:/etc/bind
+#      - ./logs2/:/var/log/named
+#    ports:
+#      - 53:53/udp
+#    networks:
+#      lab1:
+#        ipv4_address: 10.18.51.6
+#    restart: always
+networks:
+  lab1:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.18.51.0/24
