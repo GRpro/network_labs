@@ -1,0 +1,19 @@
+$TTL 1h
+; -----------------------------------------------------------------------------
+; SOA for zone05.net
+; -----------------------------------------------------------------------------
+
+@ IN SOA ns.zone05.net contact.zone05.net. (
+            2016021501      ; Serial
+            1h              ; Refresh
+            15m             ; Retry
+            1d              ; Expire
+            1h );           ; Negative Cache TTL
+
+               IN    NS          ns1.zone05.net.
+
+10             IN    PTR         alpha.zone05.net.
+20             IN    PTR         beta.zone05.net.
+30             IN    PTR         gamma.zone05.net.
+40             IN    PTR         delta.zone05.net.
+50             IN    PTR         omega.zone05.net.
