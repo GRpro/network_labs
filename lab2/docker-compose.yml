@@ -10,6 +10,8 @@ services:
       - "587:587"
     hostname: zone05.net
     environment:
+      - myhostname=zone05.net
+      - mydestination=zone05.net
       - networks=127.0.0.0/8,[::1]/128,172.25.11.10,172.25.11.20,172.25.11.30,172.25.40,172.25.11.50
       - user=<user>@gmail.com #TODO
       - pass=<pass> #TODO
@@ -21,6 +23,8 @@ services:
   host:
     build: .
     environment:
+      - myhostname=fake
+      - mydestination=fake
       - user=fake@gmail.com
       - pass=fake
     networks:

@@ -31,6 +31,8 @@ smtp_tls_CApath = /etc/ssl/certs
 smtp_use_tls = yes
 " > /etc/postfix/main.cf
 
+postconf -e "myhostname=$myhostname"
+postconf -e "mydestination=$mydestination"
 postconf -e "mynetworks=$networks"
 postconf -e "alias_database=hash:/etc/aliases"
 postconf -e "alias_maps=hash:/etc/aliases"
