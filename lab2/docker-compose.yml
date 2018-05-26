@@ -1,0 +1,36 @@
+version: "2"
+
+services:
+
+  zone05.net:
+    build: .
+    ports:
+      - "25:25"
+      - "465:465"
+      - "587:587"
+    hostname: zone05.net
+    environment:
+      - networks=127.0.0.0/8,[::1]/128,172.25.11.10,172.25.11.20,172.25.11.30,172.25.40,172.25.11.50
+      - user=<user>@gmail.com #TODO
+      - pass=<pass> #TODO
+    networks:
+      lab2:
+        ipv4_address: 172.25.11.10
+    restart: always
+
+  host:
+    build: .
+    environment:
+      - user=fake@gmail.com
+      - pass=fake
+    networks:
+      lab2:
+        ipv4_address: 172.25.11.20
+    restart: always
+
+networks:
+  lab2:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.25.11.0/24
