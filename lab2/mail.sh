@@ -50,10 +50,11 @@ srv02:          beta
 srv03:          gamma
 srv04:          delta
 srv05:          omega
-" >> /etc/postfix/aliases
+" >> /etc/aliases
+
+newaliases
 
 service rsyslog start > /dev/null
 service postfix start > /dev/null
 
-#mail "$@"
 sleep infinity

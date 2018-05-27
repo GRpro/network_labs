@@ -2,6 +2,7 @@
 FROM ubuntu:14.04
 
 RUN apt-get update
+RUN apt-get install -y vim
 RUN apt-get install -y telnet
 RUN apt-get install -y mailutils
 RUN echo "postfix postfix/mailname string gmail.com" | debconf-set-selections

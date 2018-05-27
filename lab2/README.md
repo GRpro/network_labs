@@ -27,6 +27,8 @@ Connection closed by foreign host.
 root@zone05:/# 
 ```
 
+To send mail to local user you have to create it first!
+
 ## In case you wanna see logs
 cat /var/log/mail.log
 
