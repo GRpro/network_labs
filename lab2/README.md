@@ -5,13 +5,13 @@
 4. run `docker exec -it lab2_host_1`
 5. Send email via Telnet example 
 ```
-root@zone05:/# telnet localhost 25
+root@zone08:/# telnet localhost 25
 Trying 127.0.0.1...
 Connected to localhost.
 Escape character is '^]'.
-220 zone05.net ESMTP Postfix
+220 zone08.edu ESMTP Postfix
 HELO host
-250 zone05.net
+250 zone08.edu
 MAIL FROM: <user>@gmail.com
 250 2.1.0 Ok
 RCPT TO: <some_user>@gmail.com
@@ -24,7 +24,7 @@ Email body
 quit
 221 2.0.0 Bye
 Connection closed by foreign host.
-root@zone05:/# 
+root@zone08:/# 
 ```
 
 ## In case you wanna see logs

@@ -31,6 +31,8 @@ smtp_tls_CApath = /etc/ssl/certs
 smtp_use_tls = yes
 " > /etc/postfix/main.cf
 
+postconf -e "myhostname=$myhostname"
+postconf -e "mydestination=$mydestination"
 postconf -e "mynetworks=$networks"
 postconf -e "alias_database=hash:/etc/aliases"
 postconf -e "alias_maps=hash:/etc/aliases"
@@ -43,11 +45,11 @@ postmap /etc/postfix/saslpass
 
 echo -e "
 
-srv01:          alpha
-srv02:          beta
-srv03:          gamma
-srv04:          delta
-srv05:          omega
+ws1:          rose
+ws2:          tulip
+ws3:          narcissus
+ws4:          aster
+ws5:          peony
 " >> /etc/postfix/aliases
 
 service rsyslog start > /dev/null

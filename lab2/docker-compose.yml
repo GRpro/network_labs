@@ -2,30 +2,34 @@ version: "2"
 
 services:
 
-  zone05.net:
+  zone08.edu:
     build: .
     ports:
       - "25:25"
       - "465:465"
       - "587:587"
-    hostname: zone05.net
+    hostname: zone08.edu
     environment:
-      - networks=127.0.0.0/8,[::1]/128,172.25.11.10,172.25.11.20,172.25.11.30,172.25.40,172.25.11.50
+      - myhostname=zone08.edu
+      - mydestination=zone08.edu
+      - networks=127.0.0.0/8,[::1]/128,192.168.33.1,192.168.33.2,192.168.33.3,192.168.33.4,192.168.33.5
       - user=<user>@gmail.com #TODO
       - pass=<pass> #TODO
     networks:
       lab2:
-        ipv4_address: 172.25.11.10
+        ipv4_address: 192.168.33.1 # If the host ip address is 192.168.X.X then this will not work. Comment networks section and restart. Use only one zone08.edu container.
     restart: always
 
   host:
     build: .
     environment:
+      - myhostname=fake
+      - mydestination=fake
       - user=fake@gmail.com
       - pass=fake
     networks:
       lab2:
-        ipv4_address: 172.25.11.20
+        ipv4_address: 192.168.33.2
     restart: always
 
 networks:
@@ -33,4 +37,4 @@ networks:
     driver: bridge
     ipam:
       config:
-      - subnet: 172.25.11.0/24
+      - subnet: 192.168.33.0/8
