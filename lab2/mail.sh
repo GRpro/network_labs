@@ -37,6 +37,10 @@ postconf -e "mynetworks=$networks"
 postconf -e "alias_database=hash:/etc/aliases"
 postconf -e "alias_maps=hash:/etc/aliases"
 
+"
+smtpd_client_restrictions = permit_mynetworks, reject
+smtpd_sender_restrictions = reject_unknown_sender_domain
+" > /etc/postfix/main.cf
 
 echo "[smtp.gmail.com]:587 $user:$pass" \
 >> /etc/postfix/saslpass
@@ -50,7 +54,15 @@ ws2:          tulip
 ws3:          narcissus
 ws4:          aster
 ws5:          peony
-" >> /etc/postfix/aliases
+" >> /etc/aliases
+
+useradd rose
+useradd tulip
+useradd narcissus
+useradd aster
+useradd peony
+
+newaliases
 
 service rsyslog start > /dev/null
 service postfix start > /dev/null
