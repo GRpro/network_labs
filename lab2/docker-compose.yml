@@ -20,7 +20,7 @@ services:
         ipv4_address: 172.25.11.10
     restart: always
 
-  host:
+  host1:
     build: .
     environment:
       - myhostname=fake
@@ -30,6 +30,18 @@ services:
     networks:
       lab2:
         ipv4_address: 172.25.11.20
+    restart: always
+
+  host2:
+    build: .
+    environment:
+      - myhostname=fake
+      - mydestination=fake
+      - user=fake@gmail.com
+      - pass=fake
+    networks:
+      lab2:
+        ipv4_address: 172.25.11.21 # node which is not allowed to connect to SMTP server
     restart: always
 
 networks:

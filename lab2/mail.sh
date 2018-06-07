@@ -16,6 +16,8 @@ echo $domain > /etc/mailname
 # configure Postfix
 
 echo -e "
+smtpd_client_restrictions = permit_mynetworks, reject
+smtpd_server_restrictions = reject_unknown_sender_domain
 biff = no
 append_dot_mydomain = no
 recipient_delimiter = +
@@ -42,6 +44,12 @@ echo "[smtp.gmail.com]:587 $user:$pass" \
 >> /etc/postfix/saslpass
 
 postmap /etc/postfix/saslpass
+
+useradd alpha
+useradd beta
+useradd gamma
+useradd delta
+useradd omega
 
 echo -e "
 
