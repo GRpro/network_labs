@@ -1,0 +1,37 @@
+version: "2"
+
+services:
+
+  ftp1:
+    build: .
+    ports:
+      - "21:21"
+    hostname: ftp1
+    volumes:
+     - ./logs:/var/log/vsftpd/
+     - ./conf/vsftpd.conf:/etc/vsftpd.conf
+     - ./conf/vsftpd.userlist:/etc/vsftpd.userlist
+     - ./conf/vsftpd.chroot_list:/etc/vsftpd.chroot_list
+    networks:
+      lab4:
+        ipv4_address: 172.25.11.20
+    restart: always
+
+#  ftp2:
+#    build: .
+#    ports:
+#      - "22:21"
+#    hostname: ftp2
+#    volumes:
+#     - ./conf/vsftpd.conf:/etc/vsftpd.conf
+#    networks:
+#      lab4:
+#        ipv4_address: 172.25.11.20
+#    restart: always
+#
+networks:
+  lab4:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.25.11.0/24
