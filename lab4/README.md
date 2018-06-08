@@ -13,14 +13,14 @@ Start
 
 Login
 =====
-login into container
-`ftp localhost 21`
+login into "host" container 
+`ftp ftp1 21`
 enter username
 enter password
 
 
 Anonymous login
 ===============
-login into container
-`ftp localhost 21`
+login into "host" container 
+`ftp ftp1 21`
 enter anonymous
