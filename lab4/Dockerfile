@@ -43,10 +43,9 @@ RUN echo "saturn:saturn" | chpasswd
 RUN adduser jupiter --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 RUN echo "jupiter:jupiter" | chpasswd
 
-
 VOLUME /etc
 
-EXPOSE 21
+EXPOSE 21 20
 
 CMD chown root:root /etc/vsftpd.*
 CMD /usr/sbin/vsftpd

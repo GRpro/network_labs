@@ -18,6 +18,7 @@ services:
         ipv4_address: 172.25.11.20
     restart: always
 
+
   host:
     build: .
     expose:
