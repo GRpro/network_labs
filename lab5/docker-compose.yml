@@ -1,0 +1,37 @@
+version: "2"
+
+services:
+
+  host1:
+    build: .
+    privileged: true
+    ports:
+      - "1111:111"
+      - "2049:2049"
+    networks:
+      lab5:
+        ipv4_address: 10.18.51.2
+    restart: always
+
+  host2:
+    build: .
+    privileged: true
+    networks:
+      lab5:
+        ipv4_address: 10.18.51.6
+    restart: always
+
+  host3:
+    build: .
+    privileged: true
+    networks:
+      lab5:
+        ipv4_address: 10.18.51.7 # not allowed to mount -t nfs  10.18.51.2:/usr/share <dir>
+    restart: always
+
+networks:
+  lab5:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 10.18.51.0/24
