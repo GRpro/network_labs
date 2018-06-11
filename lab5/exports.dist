@@ -1,0 +1,5 @@
+# Modify to your needs, add other NFS options as needed (http://manpages.ubuntu.com/manpages/natty/man8/unfsd.8.html)
+#/path/to/share    (ro)
+
+/usr/local/appl 10.18.51.0/24(ro)
+/usr/local/share  10.18.51.9(rw)
