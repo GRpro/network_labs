@@ -5,7 +5,7 @@ MAINTAINER Pepijn Bruienne bruienne@gmail.com
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
-    apt-get install -y build-essential flex bison nfs-client curl
+    apt-get install -y build-essential flex bison nfs-client curl net-tools
 
 RUN apt-get clean all
 
