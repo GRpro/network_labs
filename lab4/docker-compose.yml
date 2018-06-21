@@ -16,8 +16,6 @@ services:
     networks:
       lab4:
         ipv4_address: 172.25.11.20
-    restart: always
-
 
   host:
     build: .
@@ -25,8 +23,8 @@ services:
       - "1-65535"
     hostname: host
     networks:
-      - lab4
-    restart: always
+      lab4:
+        ipv4_address: 172.25.11.5
 
 networks:
   lab4:

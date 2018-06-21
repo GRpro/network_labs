@@ -48,6 +48,6 @@ VOLUME /etc
 EXPOSE 21 20
 
 CMD chown root:root /etc/vsftpd.*
-CMD /usr/sbin/vsftpd
+CMD vsftpd
 #CMD sleep 5000
 
