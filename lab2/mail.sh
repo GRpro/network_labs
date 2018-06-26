@@ -43,16 +43,16 @@ postmap /etc/postfix/saslpass
 adduser rose --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 echo "rose:rose" | sudo chpasswd
 
-adduser beta --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+adduser tulip --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 echo "tulip:tulip" | sudo chpasswd
 
-adduser gamma --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+adduser narcissus --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 echo "narcissus:narcissus" | sudo chpasswd
 
-adduser delta --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+adduser aster --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 echo "aster:aster" | sudo chpasswd
 
-adduser omega --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+adduser peony --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
 echo "peony:peony" | sudo chpasswd
 
 echo -e "

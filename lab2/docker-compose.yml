@@ -28,13 +28,7 @@ services:
       - pass=fake
     networks:
       lab2:
-        ipv4_address: 192.168.33.2
-
-  host_unauth:
-    build: .
-    networks:
-      lab2:
-        ipv4_address: 192.168.35.1
+        ipv4_address: 192.168.33.6
 
 networks:
   lab2:
