@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  httpd:
+    build: '.'
+    ports:
+      - 80:80
+      - 443:443
+      - 8088:8088
+      - 4431:4431
+      - 4432:4432
+    volumes:
+      - './vhosts:/bitnami/apache/conf/vhosts'
+      - './apps/app1:/usr/apache'
+      - './apps/app2:/usr/home/web'
+      - './apps/certs:/bitnami/apache/conf/bitnami/certs'
