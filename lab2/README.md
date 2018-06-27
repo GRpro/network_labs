@@ -1,8 +1,8 @@
 # Steps
 1. enable in your gmail account less secure apps https://myaccount.google.com/lesssecureapps
 2. set gmail `user` and `pass` in a docker-compose.yml
-3. run `docker-compose up -d`
-4. run `docker exec -it lab2_host_1`
+3. run `docker-compose up`
+4. in separate window run `docker exec -it lab2_host_1 bash`
 5. Send email via Telnet example 
 ```
 root@zone05:/# telnet localhost 25

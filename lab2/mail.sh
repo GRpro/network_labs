@@ -16,21 +16,16 @@ echo $domain > /etc/mailname
 # configure Postfix
 
 echo -e "
-smtpd_client_restrictions = permit_mynetworks, reject
-smtpd_server_restrictions = reject_unknown_sender_domain
 biff = no
 append_dot_mydomain = no
 recipient_delimiter = +
 inet_interfaces = all
 relayhost = [smtp.gmail.com]:587
-smtp_sasl_auth_enable = yes
-smtp_sasl_path = smtpd
-smtp_sasl_password_maps = hash:/etc/postfix/saslpass
-smtp_sasl_auth_enable = yes
-smtp_cname_overrides_servername = no
-smtp_sasl_security_options = noanonymous
-smtp_tls_CApath = /etc/ssl/certs
-smtp_use_tls = yes
+
+smtpd_client_restrictions = permit_mynetworks,permit_sasl_authenticated,reject
+smtpd_sasl_auth_enable=yes
+smtpd_sender_restrictions=permit_mynetworks,permit_sasl_authenticated,reject
+broken_sasl_auth_clients=yes
 " > /etc/postfix/main.cf
 
 postconf -e "myhostname=$myhostname"
@@ -45,11 +40,26 @@ echo "[smtp.gmail.com]:587 $user:$pass" \
 
 postmap /etc/postfix/saslpass
 
-useradd alpha
-useradd beta
-useradd gamma
-useradd delta
-useradd omega
+adduser alpha --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+echo "alpha:alpha" | sudo chpasswd
+
+adduser beta --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+echo "beta:beta" | sudo chpasswd
+
+adduser gamma --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+echo "gamma:gamma" | sudo chpasswd
+
+adduser delta --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+echo "delta:delta" | sudo chpasswd
+
+adduser omega --gecos "First Last,RoomNumber,WorkPhone,HomePhone" --disabled-password
+echo "omega:omega" | sudo chpasswd
+
+#useradd alpha
+#useradd beta
+#useradd gamma
+#useradd delta
+#useradd omega
 
 echo -e "
 
@@ -62,7 +72,28 @@ srv05:          omega
 
 newaliases
 
-service rsyslog start > /dev/null
-service postfix start > /dev/null
+echo "$ARG"
+#USER=`echo "$ARG" | cut -d":" -f1`
+USER=manu
+echo "    >> adding user: $USER"
+useradd -s /bin/bash $USER
+echo "manu:manu" | chpasswd
+if [ ! -d /var/spool/mail/$USER ]
+then
+  mkdir /var/spool/mail/$USER
+fi
+chown -R $USER:mail /var/spool/mail/$USER
+chmod -R a=rwx /var/spool/mail/$USER
+chmod -R o=- /var/spool/mail/$USER
 
-sleep infinity
+service rsyslog start
+service saslauthd start
+service postfix start
+#
+#
+#service rsyslog start > /dev/null
+#service postfix start > /dev/null
+sleep 5
+tail -f /var/log/mail.log
+
+#sleep infinity
